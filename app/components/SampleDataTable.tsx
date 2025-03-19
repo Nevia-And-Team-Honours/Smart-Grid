@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface SampleDataTableProps {
-  data: any[];
+  data: { [key: string]: string | number }[];
 }
 
 const SampleDataTable: React.FC<SampleDataTableProps> = ({ data }) => {
