@@ -282,6 +282,7 @@ const Dashboard: React.FC<DashboardProps> = ({ datasetInfo = defaultDatasetInfo 
       }
 
       const data = await response.json();
+      console.log("Uploaded dataset:", data);
       setUploadSuccess(true);
       setRefreshDataset(prev => !prev); // Toggle to refresh data
       
