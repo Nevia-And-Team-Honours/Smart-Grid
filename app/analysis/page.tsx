@@ -23,9 +23,9 @@ const Analysis: NextPage = () => {
       try {
         // Fetch all data in parallel
         const [corrResponse, featureResponse, perfResponse] = await Promise.all([
-          fetch('http://localhost:5000/api/correlations'),
-          fetch('http://localhost:5000/api/feature-importance'),
-          fetch('http://localhost:5000/api/model-performance')
+          fetch('https://smart-grid-backend-production.up.railway.app/api/correlations'),
+          fetch('https://smart-grid-backend-production.up.railway.app/api/feature-importance'),
+          fetch('https://smart-grid-backend-production.up.railway.app/api/model-performance')
         ]);
 
         const corrData = await corrResponse.json();

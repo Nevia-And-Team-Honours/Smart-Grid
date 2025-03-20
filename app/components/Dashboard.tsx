@@ -68,7 +68,7 @@ const Dashboard: React.FC<DashboardProps> = ({ datasetInfo = defaultDatasetInfo 
     const fetchDatasetInfo = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/api/dataset-info");
+        const response = await fetch("https://smart-grid-backend-production.up.railway.app/api/dataset-info");
         const data = await response.json();
         setDatasetInfoState(data || defaultDatasetInfo);
       } catch (error) {
@@ -88,7 +88,7 @@ const Dashboard: React.FC<DashboardProps> = ({ datasetInfo = defaultDatasetInfo 
       try {
         setLoading(true);
         const response = await fetch(
-          "http://localhost:5000/api/sample-data?limit=5"
+          "https://smart-grid-backend-production.up.railway.app/api/sample-data?limit=5"
         );
         const data = await response.json();
         setSampleData(data.sample || []);
@@ -107,7 +107,7 @@ const Dashboard: React.FC<DashboardProps> = ({ datasetInfo = defaultDatasetInfo 
   useEffect(() => {
     const fetchAvailableDatasets = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/datasets");
+        const response = await fetch("https://smart-grid-backend-production.up.railway.app/api/datasets");
         const data = await response.json();
         setAvailableDatasets(data.datasets || []);
         
@@ -158,7 +158,7 @@ const Dashboard: React.FC<DashboardProps> = ({ datasetInfo = defaultDatasetInfo 
         });
       }, 300);
 
-      const response = await fetch("http://localhost:5000/api/upload-dataset", {
+      const response = await fetch("https://smart-grid-backend-production.up.railway.app/api/upload-dataset", {
         method: "POST",
         body: formData,
       });
@@ -196,7 +196,7 @@ const Dashboard: React.FC<DashboardProps> = ({ datasetInfo = defaultDatasetInfo 
     try {
       setLoading(true);
       
-      const response = await fetch("http://localhost:5000/api/switch-dataset", {
+      const response = await fetch("https://smart-grid-backend-production.up.railway.app:/api/switch-dataset", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

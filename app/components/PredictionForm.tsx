@@ -55,7 +55,7 @@ const PredictionForm: React.FC = () => {
     setError('');
     
     try {
-      const response = await fetch('http://localhost:5000/api/predict', {
+      const response = await fetch('https://smart-grid-backend-production.up.railway.app/api/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
