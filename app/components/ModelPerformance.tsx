@@ -15,6 +15,7 @@ interface ModelPerformanceProps {
 
 const ModelPerformance: React.FC<ModelPerformanceProps> = ({ modelPerformance }) => {
   const { accuracy, classification_report } = modelPerformance;
+  console.log(classification_report,"classification_report")
   
   // Extract class names
   const classNames = Object.keys(classification_report).filter(key => 
@@ -80,8 +81,8 @@ const ModelPerformance: React.FC<ModelPerformanceProps> = ({ modelPerformance })
     labels: classNames,
     datasets: [
       {
-        label: 'F1-Score',
-        data: classNames.map(cls => classification_report[cls].f1_score),
+        label: 'f1-score',
+        data: classNames.map(cls => classification_report[cls]['f1-score']),
         backgroundColor: colors.f1Score.backgroundColor,
         borderColor: colors.f1Score.borderColor,
         borderWidth: 1,
@@ -207,22 +208,18 @@ const ModelPerformance: React.FC<ModelPerformanceProps> = ({ modelPerformance })
                           <TableCell className="font-medium">{cls}</TableCell>
                           <TableCell className="font-mono">{classification_report[cls].precision.toFixed(3)}</TableCell>
                           <TableCell className="font-mono">{classification_report[cls].recall.toFixed(3)}</TableCell>
-                          <TableCell className="font-mono">{classification_report[cls].f1_score?.toFixed(3)}</TableCell>
+                          <TableCell className="font-mono">{classification_report[cls]['f1-score']?.toFixed(3)}</TableCell>
                           <TableCell className="font-mono">{classification_report[cls].support}</TableCell>
                         </TableRow>
                       ))}
                       
-                      <TableRow className="bg-gray-50">
-                        <TableCell className="font-medium">Accuracy</TableCell>
-                        <TableCell className="font-mono" colSpan={3}>{accuracy.toFixed(3)}</TableCell>
-                        <TableCell className="font-mono">{classification_report['macro avg'].support}</TableCell>
-                      </TableRow>
+                   
                       
                       <TableRow>
                         <TableCell className="font-medium">Macro Avg</TableCell>
                         <TableCell className="font-mono">{classification_report['macro avg'].precision.toFixed(3)}</TableCell>
                         <TableCell className="font-mono">{classification_report['macro avg'].recall.toFixed(3)}</TableCell>
-                        <TableCell className="font-mono">{classification_report['macro avg'].f1_score?.toFixed(3)}</TableCell>
+                        <TableCell className="font-mono">{classification_report['macro avg']['f1-score']?.toFixed(3)}</TableCell>
                         <TableCell className="font-mono">{classification_report['macro avg'].support}</TableCell>
                       </TableRow>
                       
@@ -230,7 +227,7 @@ const ModelPerformance: React.FC<ModelPerformanceProps> = ({ modelPerformance })
                         <TableCell className="font-medium">Weighted Avg</TableCell>
                         <TableCell className="font-mono">{classification_report['weighted avg'].precision.toFixed(3)}</TableCell>
                         <TableCell className="font-mono">{classification_report['weighted avg'].recall.toFixed(3)}</TableCell>
-                        <TableCell className="font-mono">{classification_report['weighted avg'].f1_score?.toFixed(3)}</TableCell>
+                        <TableCell className="font-mono">{classification_report['weighted avg']['f1-score'].toFixed(3)}</TableCell>
                         <TableCell className="font-mono">{classification_report['weighted avg'].support}</TableCell>
                       </TableRow>
                     </TableBody>
