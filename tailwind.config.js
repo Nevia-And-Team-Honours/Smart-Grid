@@ -1,15 +1,14 @@
-// tailwind.config.js
 module.exports = {
-    // Mode can be 'jit' (Just-In-Time) or undefined for standard compilation
+
     mode: 'jit',
-    // Control which files Tailwind should scan for class names
+
     content: [
       './pages/**/*.{js,ts,jsx,tsx}',
       './components/**/*.{js,ts,jsx,tsx}',
     ],
-    // Dark mode strategy: 'media' uses system preferences, 'class' uses a class on HTML element
+
     darkMode: 'class',
-    // Theme customization
+  
     theme: {
       extend: {
         colors: {
